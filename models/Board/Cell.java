@@ -41,4 +41,12 @@ public class Cell {
    public boolean hasPiece() {
       return chessPiece.isPresent();
    }
+
+   public int getVerticalDistance(Cell cell) {
+      return Math.abs(this.getY() - cell.getY());
+   }
+
+   public int getHorizontalDistance(Cell cell) {
+      return Math.abs(this.getX() - cell.getX());
+   }
 }
