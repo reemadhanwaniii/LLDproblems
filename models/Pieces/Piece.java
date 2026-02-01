@@ -3,6 +3,7 @@ package models.Pieces;
 import models.Board.Cell;
 import models.Helpers.Color;
 import models.Helpers.Directions;
+import models.Strategy.MovementStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public abstract class Piece {
     private final Color color;
     private boolean isKilled;
     private List<Move> moves;
+    private List<MovementStrategy> strategies;
 
     public Piece(PieceName name, Color color) {
         this.name = name;
@@ -45,6 +47,10 @@ public abstract class Piece {
 
     public void setKilled(boolean killed) {
         isKilled = killed;
+    }
+
+    protected boolean canMove(Cell starrCell, Cell endCell) {
+        return this.strategies.stream().anyMatch(strategy -> strategy.canMove(starrCell,endCell));
     }
 
     protected boolean isMovingHorizontally(Cell start, Cell end) {
