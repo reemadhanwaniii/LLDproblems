@@ -3,6 +3,7 @@ package models.Pieces;
 import exceptions.InvalidMoveException;
 import models.Board.Cell;
 import models.Helpers.Color;
+import models.Helpers.Directions;
 
 public class Pawn extends Piece implements ChessPiece{
 
@@ -27,23 +28,46 @@ public class Pawn extends Piece implements ChessPiece{
          *   then it can move in the positive direction of y-axis
          */
 
-        if(startCell.getVerticalDistance(endCell) > 2) {
-            throw new InvalidMoveException("Invalid Pawn move");
+
+
+
+//      write implementation for positive first in what all cases it move and for rest it returns false
+
+        Directions direction = getMovementDirection(startCell, endCell);
+
+        if(!isValidDirectionForPawn(direction)) {
+            throw new InvalidMoveException("Invalid move direction");
         }
-        if(!isFirstMove() && startCell.getVerticalDistance(endCell) == 2) {
-            throw new InvalidMoveException("Invalid Pawn move");
+
+        if(isMovingVertically(startCell,endCell) && !endCell.hasPiece()){
+            if(isFirstMove() && startCell.getVerticalDistance(endCell) == 2) return true;
+            else if(startCell.getVerticalDistance(endCell) == 1) return true;
+            else return false;
         }
-        if(endCell.hasPiece() && !isMovingDiagonally(startCell,endCell)) {
-            throw new InvalidMoveException("Invalid Pawn move");
-        }
-        if(isMovingHorizontally(startCell,endCell)) {
-            throw new  InvalidMoveException("Invalid Pawn move");
-        }
+
+        if(isMovingDiagonally(startCell,endCell) &&
+                endCell.hasPiece() &&
+                    this.getColor() != endCell.getChessPiece().get().getColor())
+            return true;
+
         return false;
     }
 
     @Override
     public void listPossibleMoves(Cell currentCell) {
 
+    }
+
+    private boolean isValidDirectionForPawn(Directions direction) {
+        if(this.getColor().equals(Color.WHITE)) {
+            return (direction.equals(Directions.FORWARD_Y) ||
+                    direction.equals(Directions.DIAGONAL_FORWARD_LEFT)
+            || direction.equals(Directions.DIAGONAL_FORWARD_RIGHT));
+        } else {
+           return (direction.equals(Directions.BACKWARD_Y) ||
+                    direction.equals(Directions.DIAGONAL_BACKWARD_LEFT)
+            || direction.equals(Directions.DIAGONAL_BACKWARD_RIGHT));
+
+        }
     }
 }
