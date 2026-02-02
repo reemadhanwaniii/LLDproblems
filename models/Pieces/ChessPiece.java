@@ -11,4 +11,5 @@ public interface ChessPiece {
     void listPossibleMoves(Cell currentCell);  //here we willdo sout because it is consle application we will display these are possible moves
     boolean isFirstMove();
     Color getColor();
+    String getPieceSymbol();
 }

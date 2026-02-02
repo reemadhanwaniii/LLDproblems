@@ -13,7 +13,7 @@ public abstract class Piece {
     private final Color color;
     private boolean isKilled;
     private List<Move> moves;
-    private List<MovementStrategy> strategies;
+    protected List<MovementStrategy> strategies;
 
     public Piece(PieceName name, Color color) {
         this.name = name;
@@ -47,6 +47,14 @@ public abstract class Piece {
 
     public void setKilled(boolean killed) {
         isKilled = killed;
+    }
+
+    public String getPieceSymbol() {
+        return this.getColorSymbol()+this.getName();
+    }
+
+    protected String getColorSymbol() {
+        return (color.equals(Color.WHITE)?"W":"B");
     }
 
     protected boolean canMove(Cell starrCell, Cell endCell) {

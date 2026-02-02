@@ -43,7 +43,7 @@ public class Pawn extends Piece implements ChessPiece{
        }
 
        throw new InvalidMoveException("Invalid pawn move");
-    }
+    };
 
     @Override
     public void listPossibleMoves(Cell currentCell) {
