@@ -1,6 +1,7 @@
 package models.Pieces;
 
 import models.Board.Cell;
+import models.Board.ChessBoard;
 import models.Helpers.Color;
 import models.Helpers.Directions;
 import models.Strategy.MovementStrategy;
@@ -59,8 +60,8 @@ public abstract class Piece {
         return (color.equals(Color.WHITE)?"W":"B");
     }
 
-    protected boolean canMove(Cell starrCell, Cell endCell) {
-        return this.strategies.stream().anyMatch(strategy -> strategy.canMove(starrCell,endCell));
+    protected boolean canMove(Cell startCell, Cell endCell, ChessBoard board) {
+        return this.strategies.stream().anyMatch(strategy -> strategy.canMove(startCell,endCell,board));
     }
 
     protected boolean isMovingHorizontally(Cell start, Cell end) {

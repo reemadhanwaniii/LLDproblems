@@ -47,4 +47,8 @@ public class ChessBoard implements Board {
     public void setPiece(ChessPiece piece, int row, char col) {
         board.get(row).get(col-'a').setChessPiece(piece);
     }
+
+    public List<List<Cell>> getBoard() {
+        return board;
+    }
 }

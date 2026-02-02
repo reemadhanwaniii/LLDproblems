@@ -2,10 +2,12 @@ package models.Pieces;
 
 import exceptions.InvalidMoveException;
 import models.Board.Cell;
+import models.Board.ChessBoard;
 import models.Helpers.Color;
 import models.Helpers.Directions;
 import models.Strategy.DiagonalMovementStrategy;
-import models.Strategy.PawnMovementStrategy;
+import models.Strategy.PawnDiagonalMovementStrategy;
+import models.Strategy.PawnVerticalMovementStrategy;
 
 import java.util.Arrays;
 
@@ -13,7 +15,7 @@ public class Pawn extends Piece implements ChessPiece{
 
     public Pawn(PieceName name, Color color,String pieceSymbol) {
         super(name, color,pieceSymbol);
-        this.strategies = Arrays.asList(new PawnMovementStrategy(),new DiagonalMovementStrategy());
+        this.strategies = Arrays.asList(new PawnVerticalMovementStrategy(this),new PawnDiagonalMovementStrategy());
     }
 
     @Override
@@ -22,7 +24,7 @@ public class Pawn extends Piece implements ChessPiece{
     }
 
     @Override
-    public boolean canMove(Cell startCell, Cell endCell) {
+    public boolean canMove(Cell startCell, Cell endCell, ChessBoard board) {
         /**
          *   1. If this is the first move then pawn can move one step or two step
          *   2. If this is not the first move then pawn can move only one step
@@ -38,7 +40,7 @@ public class Pawn extends Piece implements ChessPiece{
 
 //      write implementation for positive first in what all cases it move and for rest it returns false
 
-       if(super.canMove(startCell,endCell)){
+       if(super.canMove(startCell,endCell,board)){
            return true;
        }
 

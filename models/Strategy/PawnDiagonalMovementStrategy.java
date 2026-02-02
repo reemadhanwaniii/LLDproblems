@@ -3,7 +3,7 @@ package models.Strategy;
 import models.Board.Cell;
 import models.Board.ChessBoard;
 
-public class KnightMovementStrategy implements MovementStrategy {
+public class PawnDiagonalMovementStrategy implements MovementStrategy {
 
     @Override
     public boolean canMove(Cell starrCell, Cell endCell, ChessBoard board) {

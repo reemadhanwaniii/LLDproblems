@@ -2,6 +2,7 @@ package models.Pieces;
 
 import exceptions.InvalidMoveException;
 import models.Board.Cell;
+import models.Board.ChessBoard;
 import models.Helpers.Color;
 import models.Strategy.DiagonalMovementStrategy;
 import models.Strategy.KingMovementStrategy;
@@ -20,8 +21,8 @@ public class Bishop extends Piece implements ChessPiece {
     }
 
     @Override
-    public boolean canMove(Cell startCell, Cell endCell) {
-        if(super.canMove(startCell, endCell)) {
+    public boolean canMove(Cell startCell, Cell endCell, ChessBoard board) {
+        if(super.canMove(startCell, endCell,board)) {
             return true;
         }
         throw new InvalidMoveException("Invalid Bishop move");
