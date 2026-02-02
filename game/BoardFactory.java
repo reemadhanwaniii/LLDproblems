@@ -16,6 +16,21 @@ public class BoardFactory {
 
         placePawns(board,whitePieces,Color.WHITE);
         placePawns(board,blackPieces,Color.BLACK);
+
+        placeKing(board,whitePieces,Color.WHITE);
+        placeKing(board,blackPieces,Color.BLACK);
+
+        placeQueen(board,whitePieces,Color.WHITE);
+        placeQueen(board,blackPieces,Color.BLACK);
+
+        placeRook(board,whitePieces,Color.WHITE);
+        placeRook(board,blackPieces,Color.BLACK);
+
+        placeBishop(board,whitePieces,Color.WHITE);
+        placeBishop(board,blackPieces,Color.BLACK);
+
+        placeKnight(board,whitePieces,Color.WHITE);
+        placeKnight(board,blackPieces,Color.BLACK);
     }
 
     private static void placePawns(ChessBoard board,Map<PieceName,ChessPiece> colorPieces,Color color) {
@@ -28,6 +43,35 @@ public class BoardFactory {
             board.setPiece(colorPieces.get(pawns.get(col)),row,(char)(col+'a'));
         }
 
+    }
+
+    private static void placeQueen(ChessBoard board,Map<PieceName,ChessPiece> colorPieces,Color color) {
+        int row = (color.equals(Color.WHITE) ? 0 : 7);
+        board.setPiece(colorPieces.get(PieceName.QUEEN),row,'d');
+    }
+
+    private static void placeKing(ChessBoard board,Map<PieceName,ChessPiece> colorPieces,Color color) {
+        int row = (color.equals(Color.WHITE) ? 0 : 7);
+        board.setPiece(colorPieces.get(PieceName.KING),row,'e');
+    }
+
+    private static void placeRook(ChessBoard board,Map<PieceName,ChessPiece> colorPieces,Color color) {
+        int row = (color.equals(Color.WHITE) ? 0 : 7);
+        board.setPiece(colorPieces.get(PieceName.ROOK1),row,'a');
+        board.setPiece(colorPieces.get(PieceName.ROOK2),row,'h');
+
+    }
+
+    private static void placeBishop(ChessBoard board,Map<PieceName,ChessPiece> colorPieces,Color color) {
+        int row = (color.equals(Color.WHITE) ? 0 : 7);
+        board.setPiece(colorPieces.get(PieceName.BISHOP1),row,'c');
+        board.setPiece(colorPieces.get(PieceName.BISHOP2),row,'f');
+    }
+
+    private static void placeKnight(ChessBoard board,Map<PieceName,ChessPiece> colorPieces,Color color) {
+        int row = (color.equals(Color.WHITE) ? 0 : 7);
+        board.setPiece(colorPieces.get(PieceName.KNIGHT1),row,'b');
+        board.setPiece(colorPieces.get(PieceName.KNIGHT2),row,'g');
     }
 
     public static Map<PieceName,ChessPiece> getPieces(Color color) {
