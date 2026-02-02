@@ -12,13 +12,15 @@ public abstract class Piece {
     private final PieceName name;
     private final Color color;
     private boolean isKilled;
+    private final String pieceSymbol;
     private List<Move> moves;
     protected List<MovementStrategy> strategies;
 
-    public Piece(PieceName name, Color color) {
+    public Piece(PieceName name, Color color,String pieceSymbol) {
         this.name = name;
         this.color = color;
         this.isKilled = false;
+        this.pieceSymbol = pieceSymbol;
         this.moves = new ArrayList<>();
     }
 
@@ -50,7 +52,7 @@ public abstract class Piece {
     }
 
     public String getPieceSymbol() {
-        return this.getColorSymbol()+this.getName();
+        return this.pieceSymbol;
     }
 
     protected String getColorSymbol() {

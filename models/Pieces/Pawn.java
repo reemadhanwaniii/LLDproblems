@@ -11,8 +11,8 @@ import java.util.Arrays;
 
 public class Pawn extends Piece implements ChessPiece{
 
-    public Pawn(PieceName name, Color color) {
-        super(name, color);
+    public Pawn(PieceName name, Color color,String pieceSymbol) {
+        super(name, color,pieceSymbol);
         this.strategies = Arrays.asList(new PawnMovementStrategy(),new DiagonalMovementStrategy());
     }
 
