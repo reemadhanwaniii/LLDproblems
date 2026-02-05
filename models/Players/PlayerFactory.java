@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PlayerFactory {
-    public static Player createPlayer(String name, Color color, ChessBoard chessBoard){
+    public static ChessPlayer createPlayer(String name, Color color, ChessBoard chessBoard){
         Map<PieceName, ChessPiece> pieces = (color.equals(Color.BLACK) ? BoardFactory.getBlackPieces() : BoardFactory.getWhitePieces());
         return new HumanChessPlayer(name,chessBoard,pieces);
     }
