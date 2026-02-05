@@ -40,7 +40,11 @@ public class ChessBoard implements Board {
 
     @Override
     public void applyMove(Move move) {
+        Cell sourceCell = move.getSourceCell();
+        Cell destCell = move.getDestinationCell();
 
+        ChessPiece piece = sourceCell.getChessPiece().get();
+        piece.makeMove(sourceCell, destCell,this);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Rook extends Piece implements ChessPiece{
     }
 
     @Override
-    public void makeMove(Cell startCell, Cell endCell) {
+    public void makeMove(Cell startCell, Cell endCell,ChessBoard board) {
 
     }
 
