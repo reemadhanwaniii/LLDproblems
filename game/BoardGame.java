@@ -1,5 +1,6 @@
 package game;
 
+import exceptions.InvalidMoveException;
 import models.Board.Board;
 import models.Pieces.Move;
 import models.Players.Player;
@@ -16,12 +17,18 @@ public abstract class BoardGame {
         this.players = players;
     }
 
-    public void startGame(){
+    public void startGame() throws Exception{
         while(true) {
             Player current = players.poll();
 
             Move move = current.makeMove();
+
+            if(move == null) {
+                throw new InvalidMoveException("Invalid move.");
+            }
             this.board.applyMove(move);
+
+
 
             if(isGameOver()) {
                 System.out.println("Game Over");
