@@ -25,7 +25,8 @@ public class HumanChessPlayer extends ChessPlayer {
         // 3. Take the input of which cell user wants to select and then move piece from that cell
         System.out.println("Please enter the coordinates of the piece you would like to move:");
         int row = sc.nextInt();
-        int col = sc.nextInt();
+        char col = sc.next().charAt(0);
+
 
         // 4. Check if there is any piece present or not ?
         if(!this.getBoard().getBoard().get(row).get(col-'a').hasPiece()) {
@@ -35,7 +36,8 @@ public class HumanChessPlayer extends ChessPlayer {
         // 5. Take input for destination
         System.out.println("Please enter the coordinates where you would like to move your piece");
         int desRow = sc.nextInt();
-        int desCol = sc.nextInt();
+        char desCol = sc.next().charAt(0);
+
 
         // 6. check if we can move or not ?
 

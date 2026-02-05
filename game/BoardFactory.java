@@ -25,6 +25,8 @@ public class BoardFactory {
 
 
     public static void prepareBoardByPlacingPieces(ChessBoard board) {
+        whitePieces = getPieces(Color.WHITE);
+        blackPieces = getPieces(Color.BLACK);
 
 
         placePawns(board,whitePieces,Color.WHITE);
